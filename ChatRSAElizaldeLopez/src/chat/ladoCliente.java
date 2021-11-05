@@ -290,8 +290,8 @@ public class ladoCliente extends javax.swing.JFrame {
                 // byte[] arrdesencriptado = ld.decrypt(arrenc);
                 //encriptarMensaje desm = new encriptarMensaje(msjentrada);
                 //String mensajedesc = desm.desencriptamelo(bdes);
-                txtLadoClienteVentana.setText(txtLadoClienteVentana.getText() + "\n (Cifrado) Servidor: " + msjdesenc);
-                txtLadoClienteVentana1.setText(txtLadoClienteVentana1.getText() + "\n (Descifrado) Servidor: " + bytesToString(desencriptado));
+                txtLadoClienteVentana1.setText(txtLadoClienteVentana1.getText() + "\n (Desifrado) Servidor: " + msjdesenc);
+                txtLadoClienteVentana.setText(txtLadoClienteVentana.getText() + "\n (Cifrado) Servidor: " + bytesToString(desencriptado));
             }
         } catch (Exception e) {
 
