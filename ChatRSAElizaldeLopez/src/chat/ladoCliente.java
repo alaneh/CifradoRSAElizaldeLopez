@@ -1,4 +1,4 @@
-
+//Lopez Castillo Azurim Sua
 package chat;
 
 import java.io.DataInputStream;
@@ -40,6 +40,7 @@ public class ladoCliente extends javax.swing.JFrame {
      */
     public ladoCliente() {
         initComponents();
+        txtLadoClienteVentana1.setVisible(false);
         r = new Random();
         p = BigInteger.probablePrime(bitlength, r);
         q = BigInteger.probablePrime(bitlength, r);
@@ -99,6 +100,9 @@ public class ladoCliente extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnEnviarCliente = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtLadoClienteVentana1 = new javax.swing.JTextArea();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -121,32 +125,55 @@ public class ladoCliente extends javax.swing.JFrame {
 
         jLabel2.setText("Escribe tu mensaje debajo:");
 
+        txtLadoClienteVentana1.setColumns(20);
+        txtLadoClienteVentana1.setRows(5);
+        jScrollPane2.setViewportView(txtLadoClienteVentana1);
+
+        jButton1.setBackground(new java.awt.Color(87, 94, 216));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Descifrar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtMensajeCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1)
+                        .addGap(388, 388, 388)
+                        .addComponent(jButton1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(txtMensajeCliente)
+                        .addGap(177, 177, 177)
                         .addComponent(btnEnviarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(jLabel1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -176,13 +203,17 @@ public class ladoCliente extends javax.swing.JFrame {
             System.out.println("Este es el valor de d: " + bigIntObtenerD().toString());
             dosN.writeUTF(bigIntObtenerN().toString());
             dosD.writeUTF(bigIntObtenerD().toString());
-            txtLadoClienteVentana.setText(txtLadoClienteVentana.getText() + "\n (Descifrado) Usted: " + mensajeserver);
+            txtLadoClienteVentana1.setText(txtLadoClienteVentana1.getText() + "\n (Descifrado) Usted: " + mensajeserver);
             txtLadoClienteVentana.setText(txtLadoClienteVentana.getText() + "\n (Cifrado) Usted: " + bytesToString(desencriptado));
         } catch (Exception e) {
 
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEnviarClienteActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        txtLadoClienteVentana1.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -260,7 +291,7 @@ public class ladoCliente extends javax.swing.JFrame {
                 //encriptarMensaje desm = new encriptarMensaje(msjentrada);
                 //String mensajedesc = desm.desencriptamelo(bdes);
                 txtLadoClienteVentana.setText(txtLadoClienteVentana.getText() + "\n (Cifrado) Servidor: " + msjdesenc);
-                txtLadoClienteVentana.setText(txtLadoClienteVentana.getText() + "\n (Descifrado) Servidor: " + bytesToString(desencriptado));
+                txtLadoClienteVentana1.setText(txtLadoClienteVentana1.getText() + "\n (Descifrado) Servidor: " + bytesToString(desencriptado));
             }
         } catch (Exception e) {
 
@@ -268,10 +299,13 @@ public class ladoCliente extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEnviarCliente;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private static javax.swing.JTextArea txtLadoClienteVentana;
+    private static javax.swing.JTextArea txtLadoClienteVentana1;
     private javax.swing.JTextField txtMensajeCliente;
     // End of variables declaration//GEN-END:variables
 }
